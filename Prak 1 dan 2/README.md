@@ -1,4 +1,4 @@
-# Praktikum PBW 1
+# Praktikum PBW 1 dan 2
 
 ## 1. Kalkulator Sederhana
 
