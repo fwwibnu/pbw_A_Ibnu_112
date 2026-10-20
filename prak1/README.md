@@ -26,9 +26,7 @@ File: `biodata.php`
 
 ## 3. Modifikasi Program
 
-1. **Kalkulator:** Menambahkan CSS agar tampilan lebih rapi dan menampilkan operasi beserta hasil perhitungan, misalnya `100 - 25 = 75`.
-2. **Biodata:** Menambahkan informasi fakultas dan CSS agar data mahasiswa lebih mudah dibaca.
-
+Program kalkulator dan biodata berhasil dijalankan dan menampilkan hasil sesuai dengan fungsinya. Kalkulator dapat melakukan operasi aritmatika serta menampilkan pesan jika terjadi pembagian dengan nol. Biodata menampilkan informasi mahasiswa beserta predikat akademik.
 ## 4. Lima Bagian Kode Penting
 
 1. **Variabel:** Menyimpan angka dan data mahasiswa.
@@ -39,6 +37,4 @@ File: `biodata.php`
 
 ## 5. Error dan Perbaikan
 
-- **Error:** Isi dengan error yang benar-benar terjadi selama praktikum.
-- **Penyebab:** Jelaskan penyebab error tersebut.
-- **Perbaikan:** Tuliskan cara mengatasinya.
+Tidak ada error saat program dijalankan. Kalkulator dan biodata berhasil ditampilkan sesuai fungsinya.
