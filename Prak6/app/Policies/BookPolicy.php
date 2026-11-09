@@ -9,36 +9,52 @@ class BookPolicy
 {
     public function viewAny(User $user): bool
     {
-        return true; // Semua user bisa lihat list
+        return in_array($user->role, ['admin', 'staff', 'viewer'], true);
     }
 
     public function view(User $user, Book $book): bool
     {
-        return true; // Semua user bisa lihat detail
+        return in_array($user->role, ['admin', 'staff', 'viewer'], true);
     }
 
     public function create(User $user): bool
     {
-        return true; // Semua user bisa buat buku baru
+        return in_array($user->role, ['admin', 'staff'], true);
     }
 
     public function update(User $user, Book $book): bool
     {
-        return true; // Semua user bisa edit
+        return in_array($user->role, ['admin', 'staff'], true);
     }
 
     public function delete(User $user, Book $book): bool
     {
-        return true; // Semua user bisa hapus
+        return $user->role === 'admin';
+    }
+
+    // Dipakai Filament untuk bulk delete (hapus banyak sekaligus)
+    public function deleteAny(User $user): bool
+    {
+        return $user->role === 'admin';
     }
 
     public function restore(User $user, Book $book): bool
     {
-        return true;
+        return $user->role === 'admin';
+    }
+
+    public function restoreAny(User $user): bool
+    {
+        return $user->role === 'admin';
     }
 
     public function forceDelete(User $user, Book $book): bool
     {
-        return true;
+        return $user->role === 'admin';
+    }
+
+    public function forceDeleteAny(User $user): bool
+    {
+        return $user->role === 'admin';
     }
 }

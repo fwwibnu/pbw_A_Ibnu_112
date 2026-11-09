@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
+        // Akun dengan role berbeda (admin, staff, viewer)
+        $this->call(RoleUserSeeder::class);
+
         Author::factory(10)->create()->each(function (Author $author) {
             Book::factory(5)->create([
                 'author_id' => $author->id,

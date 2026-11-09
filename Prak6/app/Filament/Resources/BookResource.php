@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BookResource\Pages;
+use App\Filament\Resources\BookResource\Widgets\DashboardStats;
 use App\Models\Book;
 use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
@@ -52,6 +53,24 @@ class BookResource extends Resource
                 ->searchable()
                 ->preload()
                 ->required(),
+
+            Select::make('categories')
+                ->label('Kategori')
+                ->relationship('categories', 'name')
+                ->multiple()
+                ->searchable()
+                ->preload()
+                ->createOptionForm([
+                    TextInput::make('name')
+                        ->label('Nama Kategori')
+                        ->required()
+                        ->unique('categories', 'name')
+                        ->maxLength(255),
+
+                    Textarea::make('description')
+                        ->label('Deskripsi Kategori')
+                        ->rows(3),
+                ]),
 
             TextInput::make('publisher')
                 ->label('Penerbit')
@@ -137,6 +156,25 @@ class BookResource extends Resource
                         'available' => 'Tersedia',
                         'borrowed' => 'Dipinjam',
                     ]),
+
+                SelectFilter::make('year')
+                    ->label('Tahun Terbit')
+                    ->options(function () {
+                        $years = [];
+
+                        for ($year = (int) date('Y'); $year >= 1950; $year--) {
+                            $years[$year] = $year;
+                        }
+
+                        return $years;
+                    })
+                    ->searchable(),
+
+                SelectFilter::make('author')
+                    ->label('Penulis')
+                    ->relationship('author', 'name')
+                    ->searchable()
+                    ->preload(),
             ])
             ->actions([
                 ViewAction::make(),
